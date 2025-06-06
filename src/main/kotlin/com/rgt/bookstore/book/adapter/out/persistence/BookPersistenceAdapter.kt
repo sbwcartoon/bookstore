@@ -5,6 +5,7 @@ import com.rgt.bookstore.book.adapter.out.persistence.repository.BookJpaReposito
 import com.rgt.bookstore.book.application.port.out.BookRepository
 import com.rgt.bookstore.book.domain.model.Book
 import com.rgt.bookstore.book.domain.vo.Author
+import com.rgt.bookstore.book.domain.vo.BookId
 import com.rgt.bookstore.book.domain.vo.Title
 import org.springframework.stereotype.Repository
 
@@ -20,5 +21,11 @@ class BookPersistenceAdapter(
 
     override fun existsByTitleAndAuthor(title: Title, author: Author): Boolean {
         return bookJpaRepository.existsByTitleAndAuthor(title.toString(), author.toString())
+    }
+
+    override fun findById(id: BookId): Book? {
+        return bookJpaRepository.findById(id.toString())
+            .map { BookJpaMapper.toDomain(it) }
+            .orElse(null)
     }
 }
