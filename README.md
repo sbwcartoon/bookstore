@@ -17,11 +17,18 @@
 - Response
   - 성공
     - http status code: 200 ok
-    - body(object list)
-      - id: 책 아이디
-      - title: 제목
-      - author: 저자
-      - quantity: 수량
+    - body(object)
+      - page: 검색된 페이지 번호(1부터 시작)
+      - size: 페이지별 항목 수
+      - totalPages: 전체 페이지 수
+      - totalElements: 전체 항목 수
+      - isFirst: 첫 페이지인지 여부
+      - isLast: 마지막 페이지인지 여부
+      - content: 조회된 데이터 목록(object list)
+        - id: 책 아이디
+        - title: 제목
+        - author: 저자
+        - quantity: 수량
   - 실패 http status code
     - 500 internal server error: 서버 오류
 
