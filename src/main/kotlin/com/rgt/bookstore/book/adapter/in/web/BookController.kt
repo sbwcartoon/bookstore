@@ -4,7 +4,6 @@ import com.rgt.bookstore.book.adapter.`in`.dto.*
 import com.rgt.bookstore.book.application.port.`in`.CreateBookUseCase
 import com.rgt.bookstore.book.application.port.`in`.GetBookUseCase
 import com.rgt.bookstore.book.application.port.`in`.GetBooksUseCase
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.web.bind.annotation.*
@@ -33,8 +32,9 @@ class BookController(
     fun getBooks(
         searchFilterRequest: SearchFilterRequest,
         @PageableDefault(size = 10) pageable: Pageable,
-    ): Page<BookSummary> {
+    ): PageResponse<BookSummary> {
         val books = getBooksUseCase.execute(searchFilterRequest.toCommand(), pageable)
-        return books.map { BookSummary.from(it) }
+        val bookSummaries = books.map { BookSummary.from(it) }
+        return PageResponse.from(bookSummaries)
     }
 }
