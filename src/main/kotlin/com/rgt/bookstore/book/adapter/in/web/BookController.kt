@@ -1,10 +1,12 @@
 package com.rgt.bookstore.book.adapter.`in`.web
 
-import com.rgt.bookstore.book.adapter.`in`.dto.BookDetail
-import com.rgt.bookstore.book.adapter.`in`.dto.CreateBookRequest
-import com.rgt.bookstore.book.adapter.`in`.dto.CreateBookResponse
+import com.rgt.bookstore.book.adapter.`in`.dto.*
 import com.rgt.bookstore.book.application.port.`in`.CreateBookUseCase
 import com.rgt.bookstore.book.application.port.`in`.GetBookUseCase
+import com.rgt.bookstore.book.application.port.`in`.GetBooksUseCase
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.web.PageableDefault
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*
 class BookController(
     private val createBookUseCase: CreateBookUseCase,
     private val getBookUseCase: GetBookUseCase,
+    private val getBooksUseCase: GetBooksUseCase,
 ) {
 
     @PostMapping
@@ -24,5 +27,14 @@ class BookController(
     fun getBook(@PathVariable id: String): BookDetail {
         val book = getBookUseCase.execute(id)
         return BookDetail.from(book)
+    }
+
+    @GetMapping
+    fun getBooks(
+        searchFilterRequest: SearchFilterRequest,
+        @PageableDefault(size = 10) pageable: Pageable,
+    ): Page<BookSummary> {
+        val books = getBooksUseCase.execute(searchFilterRequest.toCommand(), pageable)
+        return books.map { BookSummary.from(it) }
     }
 }
