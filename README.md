@@ -18,6 +18,7 @@
   - 성공
     - http status code: 200 ok
     - body(object list)
+      - id: 책 아이디
       - title: 제목
       - author: 저자
       - quantity: 수량
@@ -34,6 +35,7 @@
   - 성공
     - http status code: 200 ok
     - body(object)
+      - id: 책 아이디
       - title: 제목
       - author: 저자
       - price: 가격
@@ -54,8 +56,11 @@
 - Response
   - 성공
     - http status code: 200 ok
+    - body(object)
+      - id: 추가한 책 아이디
   - 실패 http status code
     - 400 bad request: 필수 정보 없음(제목 or 저자 or 가격 or 수량) 또는 값이 유효하지 않음(가격 or 수량 오류)
+    - 409 conflict: 동일한 제목 및 저자 이름이 이미 존재하는 경우
     - 500 internal server error: 서버 오류
 
 ### 책 정보 수정
@@ -73,6 +78,7 @@
   - 실패 http status code
     - 400 bad request: 필수 정보 없음(제목 or 저자 or 가격 or 수량) 또는 값이 유효하지 않음(가격 or 수량 오류)
     - 404 not found: 해당하는 책이 없음
+    - 409 conflict: 동일한 제목 및 저자 이름이 이미 존재하는 경우
     - 500 internal server error: 서버 오류
 
 ### 책 삭제
