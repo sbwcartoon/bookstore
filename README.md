@@ -9,8 +9,8 @@
 - Request
   - url: GET /api/books
   - query parameters
-    - page: 페이지 번호(필수 아님, 기본값 1, 존재할 시 1 이상)
-    - size: 페이지별 항목 수(필수 아님, 기본값 10, 존재할 시 1 이상)
+    - page: 페이지 번호(필수 아님, 1부터 시작, 기본값 1)
+    - size: 페이지별 항목 수(필수 아님, 기본값 10)
     - title: 제목 필터(필수 아님)
     - author: 저자 필터(필수 아님)
   - body: (없음)
@@ -23,7 +23,6 @@
       - author: 저자
       - quantity: 수량
   - 실패 http status code
-    - 400 bad request: 값이 유효하지 않음(페이지 번호 or 페이지별 항목 수 오류)
     - 500 internal server error: 서버 오류
 
 ### 책 상세 정보 조회
