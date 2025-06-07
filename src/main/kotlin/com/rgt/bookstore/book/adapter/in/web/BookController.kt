@@ -1,10 +1,7 @@
 package com.rgt.bookstore.book.adapter.`in`.web
 
 import com.rgt.bookstore.book.adapter.`in`.dto.*
-import com.rgt.bookstore.book.application.port.`in`.CreateBookUseCase
-import com.rgt.bookstore.book.application.port.`in`.GetBookUseCase
-import com.rgt.bookstore.book.application.port.`in`.GetBooksUseCase
-import com.rgt.bookstore.book.application.port.`in`.UpdateBookUseCase
+import com.rgt.bookstore.book.application.port.`in`.*
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.web.bind.annotation.*
@@ -16,6 +13,7 @@ class BookController(
     private val getBookUseCase: GetBookUseCase,
     private val getBooksUseCase: GetBooksUseCase,
     private val updateBookUseCase: UpdateBookUseCase,
+    private val deleteBookUseCase: DeleteBookUseCase,
 ) {
 
     @PostMapping
@@ -43,5 +41,10 @@ class BookController(
     @PutMapping("/{id}")
     fun update(@RequestBody updateBookRequest: UpdateBookRequest) {
         updateBookUseCase.execute(updateBookRequest.toCommand())
+    }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id: String) {
+        deleteBookUseCase.execute(id)
     }
 }
