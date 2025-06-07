@@ -20,12 +20,11 @@ class CreateBookSucceedTest(
     private val jpaRepository: BookJpaRepository,
 ) : BehaviorSpec({
 
+    beforeSpec {
+        jpaRepository.deleteAll()
+    }
+
     Given("책 생성 요청을 할 때") {
-
-        beforeContainer {
-            jpaRepository.deleteAll()
-        }
-
         When("조건을 만족하면") {
             Then("저장되고 저장한 책 아이디가 반환된다") {
                 val existing = CreateBookRequest(
