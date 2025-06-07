@@ -31,6 +31,8 @@ dependencies {
     implementation("com.querydsl:querydsl-jpa:${querydslVersion}:jakarta")
     kapt("com.querydsl:querydsl-apt:${querydslVersion}:jakarta")
     kapt("jakarta.persistence:jakarta.persistence-api:3.2.0")
+
+    runtimeOnly("org.postgresql:postgresql")
 }
 
 // test
