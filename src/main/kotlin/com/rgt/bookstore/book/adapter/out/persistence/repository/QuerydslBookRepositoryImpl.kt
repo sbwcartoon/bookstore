@@ -27,6 +27,7 @@ class QuerydslBookRepositoryImpl(
             .where(*predicates.toTypedArray())
             .offset(pageable.offset)
             .limit(pageable.pageSize.toLong())
+            .orderBy(bookJpaEntity.title.asc(), bookJpaEntity.author.asc())
             .fetch()
 
         val countQuery = queryFactory
