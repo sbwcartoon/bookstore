@@ -24,7 +24,7 @@
       - totalElements: 전체 항목 수
       - isFirst: 첫 페이지인지 여부
       - isLast: 마지막 페이지인지 여부
-      - content: 조회된 데이터 목록(object list)
+      - content: 조회된 데이터 목록(object list). title 오름차순, author 오름차순 정렬됨
         - id: 책 아이디
         - title: 제목
         - author: 저자
