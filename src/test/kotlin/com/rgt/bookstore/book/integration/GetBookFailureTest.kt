@@ -16,12 +16,11 @@ class GetBookFailureTest(
     private val jpaRepository: BookJpaRepository,
 ) : BehaviorSpec({
 
+    beforeSpec {
+        jpaRepository.deleteAll()
+    }
+
     Given("책이 존재하지 않을 때") {
-
-        beforeContainer {
-            jpaRepository.deleteAll()
-        }
-
         When("존재하지 않는 아이디로 조회하면") {
             Then("404 Not Found 오류가 발생한다") {
                 val notExistId = UUID.randomUUID()
