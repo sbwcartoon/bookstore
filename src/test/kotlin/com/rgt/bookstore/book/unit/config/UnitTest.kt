@@ -1,4 +1,4 @@
-package com.rgt.bookstore.book.config
+package com.rgt.bookstore.book.unit.config
 
 import com.rgt.bookstore.config.QuerydslConfig
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase

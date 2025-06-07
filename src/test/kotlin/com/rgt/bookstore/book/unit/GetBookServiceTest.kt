@@ -1,4 +1,4 @@
-package com.rgt.bookstore.book
+package com.rgt.bookstore.book.unit
 
 import com.rgt.bookstore.book.application.exception.BookNotFoundException
 import com.rgt.bookstore.book.application.port.out.BookRepository

@@ -1,10 +1,10 @@
-package com.rgt.bookstore.book
+package com.rgt.bookstore.book.unit
 
 import com.rgt.bookstore.book.application.exception.DuplicateBookException
 import com.rgt.bookstore.book.application.port.`in`.command.CreateBookCommand
 import com.rgt.bookstore.book.application.port.out.BookRepository
 import com.rgt.bookstore.book.application.service.CreateBookService
-import com.rgt.bookstore.book.testfixture.BookTestFixture
+import com.rgt.bookstore.book.unit.testfixture.BookTestFixture
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.mockk.every

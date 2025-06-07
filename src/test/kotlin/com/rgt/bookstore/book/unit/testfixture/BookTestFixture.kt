@@ -1,4 +1,4 @@
-package com.rgt.bookstore.book.testfixture
+package com.rgt.bookstore.book.unit.testfixture
 
 import com.rgt.bookstore.book.domain.model.Book
 import com.rgt.bookstore.book.domain.vo.*

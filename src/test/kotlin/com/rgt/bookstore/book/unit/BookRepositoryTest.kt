@@ -1,9 +1,9 @@
-package com.rgt.bookstore.book
+package com.rgt.bookstore.book.unit
 
 import com.rgt.bookstore.book.adapter.out.persistence.mapper.BookJpaMapper
 import com.rgt.bookstore.book.adapter.out.persistence.repository.BookJpaRepository
-import com.rgt.bookstore.book.config.UnitTest
-import com.rgt.bookstore.book.testfixture.BookTestFixture
+import com.rgt.bookstore.book.unit.config.UnitTest
+import com.rgt.bookstore.book.unit.testfixture.BookTestFixture
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import java.util.*

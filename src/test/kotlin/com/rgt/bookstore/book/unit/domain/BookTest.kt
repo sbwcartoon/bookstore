@@ -1,6 +1,6 @@
 package com.rgt.bookstore.book.domain
 
-import com.rgt.bookstore.book.testfixture.BookTestFixture
+import com.rgt.bookstore.book.unit.testfixture.BookTestFixture
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import java.util.*
