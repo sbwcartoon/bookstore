@@ -13,4 +13,5 @@ interface BookRepository {
     fun existsByTitleAndAuthor(title: Title, author: Author): Boolean
     fun findById(id: BookId): Book?
     fun findAllByCondition(command: SearchFilterCommand, pageable: Pageable): Page<Book>
+    fun existsByTitleAndAuthorAndIdNot(title: Title, author: Author, id: BookId): Boolean
 }

@@ -39,4 +39,16 @@ class BookPersistenceAdapter(
         return bookJpaRepository.findAllByCondition(command, pageable)
             .map { BookJpaMapper.toDomain(it) }
     }
+
+    override fun existsByTitleAndAuthorAndIdNot(
+        title: Title,
+        author: Author,
+        id: BookId
+    ): Boolean {
+        return bookJpaRepository.existsByTitleAndAuthorAndIdNot(
+            title.toString(),
+            author.toString(),
+            id.toString(),
+        )
+    }
 }
