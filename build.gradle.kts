@@ -48,6 +48,10 @@ dependencies {
     testImplementation("com.ninja-squad:springmockk:4.0.2")
 
     testRuntimeOnly("com.h2database:h2")
+    testImplementation(platform("org.testcontainers:testcontainers-bom:1.20.6"))
+    testImplementation("org.testcontainers:testcontainers")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:postgresql")
 }
 
 kotlin {
