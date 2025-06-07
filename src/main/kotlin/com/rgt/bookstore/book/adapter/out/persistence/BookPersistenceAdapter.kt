@@ -51,4 +51,8 @@ class BookPersistenceAdapter(
             id.toString(),
         )
     }
+
+    override fun deleteById(bookId: BookId) {
+        bookJpaRepository.deleteById(bookId.toString())
+    }
 }
