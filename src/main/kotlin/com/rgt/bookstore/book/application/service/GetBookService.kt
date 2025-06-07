@@ -15,10 +15,7 @@ class GetBookService(
 
     override fun execute(id: String): Book {
         val bookId = BookId(UUID.fromString(id))
-        val book = bookRepository.findById(bookId)
-        if (book == null) {
-            throw BookNotFoundException(bookId)
-        }
-        return book
+        return bookRepository.findById(bookId)
+            ?: throw BookNotFoundException(bookId)
     }
 }
