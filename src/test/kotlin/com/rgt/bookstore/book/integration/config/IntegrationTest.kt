@@ -1,4 +1,4 @@
-package com.rgt.bookstore.book.config
+package com.rgt.bookstore.book.integration.config
 
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles

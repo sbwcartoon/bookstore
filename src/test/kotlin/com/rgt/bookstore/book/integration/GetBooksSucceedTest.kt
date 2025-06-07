@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.rgt.bookstore.book.adapter.`in`.dto.CreateBookRequest
 import com.rgt.bookstore.book.adapter.`in`.dto.PageResponse
 import com.rgt.bookstore.book.adapter.out.persistence.repository.BookJpaRepository
-import com.rgt.bookstore.book.config.IntegrationTest
+import com.rgt.bookstore.book.integration.config.IntegrationTest
 import com.rgt.bookstore.book.integration.util.PaginationTestUtil
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.collections.shouldContainAnyOf

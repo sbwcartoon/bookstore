@@ -5,7 +5,7 @@ import com.rgt.bookstore.book.adapter.`in`.dto.BookDetail
 import com.rgt.bookstore.book.adapter.`in`.dto.CreateBookRequest
 import com.rgt.bookstore.book.adapter.`in`.dto.CreateBookResponse
 import com.rgt.bookstore.book.adapter.out.persistence.repository.BookJpaRepository
-import com.rgt.bookstore.book.config.IntegrationTest
+import com.rgt.bookstore.book.integration.config.IntegrationTest
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
