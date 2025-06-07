@@ -7,7 +7,7 @@ import com.rgt.bookstore.book.adapter.out.persistence.repository.BookJpaReposito
 import com.rgt.bookstore.book.integration.config.IntegrationTest
 import com.rgt.bookstore.book.integration.util.PaginationTestUtil
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.matchers.collections.shouldContainAnyOf
+import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.http.MediaType
@@ -310,8 +310,12 @@ class GetBooksSucceedTest(
                 )
             }
 
-            responseContents shouldContainAnyOf requestContents
+            val requestJsons = requestContents.map { ObjectMapper().writeValueAsString(it) }
+            val responseJsons = responseContents.map { ObjectMapper().writeValueAsString(it) }
+
+            requestJsons shouldContainExactly responseJsons
         }
+
 
         fun sortedByTitleAndAuthor(list: List<CreateBookRequest>): List<CreateBookRequest> {
             return list.sortedWith(compareBy(CreateBookRequest::title, CreateBookRequest::author))
