@@ -4,6 +4,7 @@ import com.rgt.bookstore.book.adapter.`in`.dto.*
 import com.rgt.bookstore.book.application.port.`in`.CreateBookUseCase
 import com.rgt.bookstore.book.application.port.`in`.GetBookUseCase
 import com.rgt.bookstore.book.application.port.`in`.GetBooksUseCase
+import com.rgt.bookstore.book.application.port.`in`.UpdateBookUseCase
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.web.bind.annotation.*
@@ -14,6 +15,7 @@ class BookController(
     private val createBookUseCase: CreateBookUseCase,
     private val getBookUseCase: GetBookUseCase,
     private val getBooksUseCase: GetBooksUseCase,
+    private val updateBookUseCase: UpdateBookUseCase,
 ) {
 
     @PostMapping
@@ -36,5 +38,10 @@ class BookController(
         val books = getBooksUseCase.execute(searchFilterRequest.toCommand(), pageable)
         val bookSummaries = books.map { BookSummary.from(it) }
         return PageResponse.from(bookSummaries)
+    }
+
+    @PutMapping("/{id}")
+    fun update(@RequestBody updateBookRequest: UpdateBookRequest) {
+        updateBookUseCase.execute(updateBookRequest.toCommand())
     }
 }
