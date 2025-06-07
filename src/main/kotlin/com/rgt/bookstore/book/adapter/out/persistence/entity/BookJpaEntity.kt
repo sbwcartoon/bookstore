@@ -8,6 +8,10 @@ import jakarta.persistence.*
     uniqueConstraints = [
         UniqueConstraint(columnNames = ["title", "author"])
     ],
+    indexes = [
+        Index(name = "idx_book_author_title", columnList = "author, title"),
+        Index(name = "idx_book_title_author", columnList = "title, author"),
+    ],
 )
 class BookJpaEntity(
     @Id
