@@ -54,7 +54,7 @@ class GetBooksSucceedTest(
             val responseDto = objectMapper.readValue(responseString, PageResponse::class.java)
 
             val booksPaginated = PaginationTestUtil.paginateByOneIndexed(
-                list = existingBooks,
+                list = sortedByTitleAndAuthor(existingBooks),
                 page = defaultPage,
                 size = defaultSize,
             )
@@ -89,7 +89,7 @@ class GetBooksSucceedTest(
             }.andReturn().response.contentAsString
 
             val booksPaginated = PaginationTestUtil.paginateByOneIndexed(
-                list = existingBooks,
+                list = sortedByTitleAndAuthor(existingBooks),
                 page = page,
                 size = size,
             )
@@ -121,7 +121,7 @@ class GetBooksSucceedTest(
             val filteredBooks = existingBooks.filter { it.title == title }
 
             val booksPaginated = PaginationTestUtil.paginateByOneIndexed(
-                list = filteredBooks,
+                list = sortedByTitleAndAuthor(filteredBooks),
                 page = defaultPage,
                 size = defaultSize,
             )
@@ -153,7 +153,7 @@ class GetBooksSucceedTest(
             val filteredBooks = existingBooks.filter { it.author == author }
 
             val booksPaginated = PaginationTestUtil.paginateByOneIndexed(
-                list = filteredBooks,
+                list = sortedByTitleAndAuthor(filteredBooks),
                 page = defaultPage,
                 size = defaultSize,
             )
@@ -187,7 +187,7 @@ class GetBooksSucceedTest(
             val filteredBooks = existingBooks.filter { it.title == title && it.author == author }
 
             val booksPaginated = PaginationTestUtil.paginateByOneIndexed(
-                list = filteredBooks,
+                list = sortedByTitleAndAuthor(filteredBooks),
                 page = defaultPage,
                 size = defaultSize,
             )
@@ -225,7 +225,7 @@ class GetBooksSucceedTest(
             val filteredBooks = existingBooks.filter { it.title == title && it.author == author }
 
             val booksPaginated = PaginationTestUtil.paginateByOneIndexed(
-                list = filteredBooks,
+                list = sortedByTitleAndAuthor(filteredBooks),
                 page = page,
                 size = size,
             )
@@ -311,6 +311,10 @@ class GetBooksSucceedTest(
             }
 
             responseContents shouldContainAnyOf requestContents
+        }
+
+        fun sortedByTitleAndAuthor(list: List<CreateBookRequest>): List<CreateBookRequest> {
+            return list.sortedWith(compareBy(CreateBookRequest::title, CreateBookRequest::author))
         }
     }
 }
