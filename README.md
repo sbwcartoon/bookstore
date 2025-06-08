@@ -3,6 +3,7 @@
 ## 설치 방법
 ### 설치 전 준비
 - 설치 환경: linux
+- 운영 환경: jdk 21, postgresql 16
 - 설치 파일 구성
   - docker-compose.yml: docker compose 설정 파일
   - Dockerfile: docker 이미지 설정 파일
