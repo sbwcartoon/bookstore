@@ -1,5 +1,44 @@
 # Bookstore API Server 
 
+## 설치 방법
+### 설치 전 준비
+- 설치 환경: linux
+- 설치 파일 구성
+  - docker-compose.yml: docker compose 설정 파일
+  - Dockerfile: docker 이미지 설정 파일
+  - start.sh: 전체 설치 과정이 정의된 파일(이 파일만 실행하면 설치 및 구동함)
+- 사전 준비(준비된 경우 아래 설치로)
+  - docker 및 docker compose 설치
+    - docker 설치 참조: https://docs.docker.com/engine/install
+    - docker compose 설치 참조: https://docs.docker.com/compose/install
+
+### 설치
+```shell
+$ sh start.sh
+```
+- 본 시스템은 포트 8080번을 사용하는데, 만약 포트 8080번이 이미 사용 중일 경우, 본 소스의 docker-compose.yml 파일 변경 후 다시 시도
+  - ports 항목의 "8080:8080" 중 앞 숫자를 바꾸고 싶은 포트로 변경한 후 다시 시도(ex. 8000으로 변경할 경우 "8000:8080")
+- 설치 완료 후 포트포워딩
+  - 포트포워딩을 완료해야 프론트엔드에서 사용 가능. 해당 주소 정보를 프론트엔드에서 사용함(프론트엔드 소스의 README.md 참조)
+
+### 설치 완료 확인
+- 아래 명령어를 실행하여 구동중인 컨테이너가 rgt-bookstore, rgt-bookstore-db 총 2개가 있으면 설치 완료됨
+```shell
+$ docker ps --filter "name=rgt-bookstore"
+```
+- 다만 상기 명령어는 컨테이너가 설치된 것을 의미하며 이후 구동까지는 시간이 더 걸릴 수 있음
+
+### 설치 실패 대응법
+- Error response from daemon: driver failed... port is already in use
+  - 설치하려는 port가 이미 사용중임. 상기 설치의 포트 변경 방법을 참고하여 다시 설치
+
+### 테스트
+- 브라우저의 주소창에 설치한 호스트 주소(아래 예시의 api-host 부분) 및 포트(아래 예시는 기본값인 8080번을 사용. 상기 설치 과정에서 변경한 경우는 변경한 번호를 사용해야 함), 사용할 api(GET만 가능) 주소를 입력하여 테스트
+```
+### 책 목록 조회 api 사용
+http://api-host:8080/api/books
+```
+
 ## 설계 참고
 - 호스팅 서비스는 배포 단계의 제약이므로, 가능하면 코드에는 영향이 없도록 함
   - 호스팅 서비스마다 지원하는 DBMS가 다르므로, 성능상 불이익이 있더라도 가능한 한 표준 SQL을 사용함(ex. 시스템의 UUID는 db에서 문자열 타입으로 관리)
