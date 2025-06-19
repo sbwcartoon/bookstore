@@ -7,7 +7,7 @@ plugins {
     kotlin("kapt") version "1.9.25"
 }
 
-group = "com.rgt"
+group = "toy.test"
 version = "1.0.2-SNAPSHOT"
 
 java {

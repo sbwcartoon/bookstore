@@ -23,9 +23,9 @@ $ sh start.sh
   - 포트포워딩을 완료해야 프론트엔드에서 사용 가능(localhost 안됨). 포트포워딩한 주소 정보를 프론트엔드에서 사용함(프론트엔드 소스의 README.md 참조)
 
 ### 설치 완료 확인
-- 아래 명령어를 실행하여 구동중인 컨테이너가 rgt-bookstore, rgt-bookstore-db 총 2개가 있으면 설치 완료됨
+- 아래 명령어를 실행하여 구동중인 컨테이너가 bookstore, bookstore-db 총 2개가 있으면 설치 완료됨
 ```shell
-$ docker ps --filter "name=rgt-bookstore"
+$ docker ps --filter "name=bookstore"
 ```
 - 다만 상기 명령어는 컨테이너가 설치된 것을 의미하며 이후 구동까지는 시간이 더 걸릴 수 있음
 

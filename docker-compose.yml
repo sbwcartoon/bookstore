@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: postgres:16-alpine
-    container_name: rgt-bookstore-db
+    container_name: bookstore-db
     environment:
       POSTGRES_DB: bookstore
       POSTGRES_USER: bookstore_user
@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
 
   app:
-    container_name: rgt-bookstore
+    container_name: bookstore
     build: .
     depends_on:
       db:

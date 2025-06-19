@@ -11,7 +11,7 @@ RUN gradle bootJar --no-daemon
 
 # deploy
 FROM amazoncorretto:21-alpine-jdk
-LABEL title="rgt-bookstore"
+LABEL title="bookstore"
 LABEL version="1.0"
 
 ### init timezone
